@@ -20,41 +20,75 @@ let obstacleList = [
   // ],
 
   [
-    [0, 2, 0, 0, 0],
-    [0, 1, 0, 0, 0],
-    [0, 3, 0, 0, 0],
+    [0, 0, 2, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 3, 0, 0],
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
   ],
-
-  // [
-  //   [2, 0, 0, 0, 0],
-  //   [1, 1, 0, 0, 0],
-  //   [0, 1, 1, 0, 0],
-  //   [0, 0, 1, 1, 0],
-  //   [0, 0, 0, 1, 3],
-  // ],
-  // [
-  //   [0, 0, 1, 1, 2],
-  //   [0, 0, 1, 0, 0],
-  //   [0, 0, 1, 0, 0],
-  //   [3, 1, 1, 0, 0],
-  //   [0, 0, 0, 0, 0],
-  // ],
-  // [
-  //   [0, 0, 2, 0, 0],
-  //   [0, 0, 1, 0, 0],
-  //   [0, 0, 1, 1, 1],
-  //   [0, 0, 0, 0, 1],
-  //   [0, 0, 0, 0, 3],
-  // ],
-  // [
-  //   [0, 2, 1, 1, 0],
-  //   [0, 0, 0, 1, 0],
-  //   [1, 1, 1, 1, 0],
-  //   [1, 0, 0, 0, 0],
-  //   [1, 1, 3, 0, 0],
-  // ],
+  [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 2, 1, 3, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 2, 1, 1, 0],
+    [0, 0, 0, 3, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  [
+    [0, 0, 2, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 1, 0, 0, 0],
+    [0, 3, 0, 0, 0],
+  ],
+  [
+    [2, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 3],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  [
+    [2, 0, 3, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 0, 1, 0, 0],
+    [1, 1, 1, 0, 0],
+  ],
+  [
+    [2, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 0, 1, 1, 0],
+    [0, 0, 0, 1, 3],
+  ],
+  [
+    [0, 0, 1, 1, 2],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [3, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+  ],
+  [
+    [0, 0, 2, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 1, 1],
+    [0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 3],
+  ],
+  [
+    [0, 2, 1, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0],
+    [1, 1, 3, 0, 0],
+  ],
 ];
 
 // user interface list
@@ -97,7 +131,7 @@ function startGame() {
     startButtonUI.classList.add("hidden");
     hideInGameUI(false);
 
-    shuffle(obstacleList);
+    // shuffle(obstacleList);
     obstacleGenerator();
   }
 }
@@ -193,8 +227,9 @@ moveButtonUI.addEventListener("click", function () {
         }
         let temporaryPosition = getCurrentPosition();
         console.log(temporaryPosition);
-        if (temporaryPosition == 0 || temporaryPosition == null) {
+        if (temporaryPosition == 0 || temporaryPosition == undefined) {
           clearInterval(interval);
+          //alert("Game Over 1");
           gameOver();
         }
       }, 1000);
@@ -207,26 +242,30 @@ moveButtonUI.addEventListener("click", function () {
 
 function gameOverCheck() {
   if (play) {
-    console.log("Game Over Check");
-    let currentPosition = getCurrentPosition();
-    console.log(currentPosition);
-    if (currentPosition == 3) {
-      playAudio("successAudio");
-      score++;
-      console.log(score);
-      currentObstacle++;
-      if (currentObstacle < obstacleList.length) {
-        setTimeout(function () {
-          hideInGameUI(false);
-          processingButtonUI.classList.add("hidden");
-          obstacleGenerator();
-        }, 1000);
+    setTimeout(function () {
+      console.log("Game Over Check");
+      let currentPosition = getCurrentPosition();
+      console.log(currentPosition);
+      if (currentPosition == 3) {
+        playAudio("successAudio");
+        score++;
+        console.log(score);
+        currentObstacle++;
+        if (currentObstacle < obstacleList.length) {
+          setTimeout(function () {
+            hideInGameUI(false);
+            processingButtonUI.classList.add("hidden");
+            obstacleGenerator();
+          }, 1000);
+        } else {
+          //alert("Game Over 2");
+          gameOver();
+        }
       } else {
+        //alert("Game Over 3");
         gameOver();
       }
-    } else {
-      gameOver();
-    }
+    }, 1000);
   }
 }
 
@@ -299,10 +338,19 @@ replayButtonUI.addEventListener("click", function () {
 function gameOver() {
   console.log("Game Over");
 
-  if (score >= 1) {
+  if (score == obstacleList.length) {
     playAudio("winAudio");
+    scoreUI.classList.remove("hidden");
+    scoreUI.innerHTML = "Congratulations! You have completed the game!";
   } else {
     playAudio("loseAudio");
+    scoreUI.classList.remove("hidden");
+    scoreUI.innerHTML =
+      "Aww, you lost! your score is " +
+      score +
+      ", your high score is " +
+      localStorage.getItem("highScore") +
+      ", try again!";
   }
 
   let highScore = localStorage.getItem("highScore");
@@ -318,8 +366,6 @@ function gameOver() {
   startButtonUI.classList.remove("hidden");
   processingButtonUI.classList.add("hidden");
   hideInGameUI(true);
-  scoreUI.classList.remove("hidden");
-  scoreUI.innerHTML = "Your score: " + score;
 }
 
 function getCurrentPosition() {

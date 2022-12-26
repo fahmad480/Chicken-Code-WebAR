@@ -1,0 +1,260 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <title>Chicken Code</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <!-- <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.animation.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.material.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.primitives.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.physics.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.controls.min.js"></script> -->
+  </head>
+  <body>
+    <a-scene>
+      <!-- import all 3d model from models folder -->
+      <a-assets>
+        <a-asset-item id="chicken3D" src="models/chicken.glb"></a-asset-item>
+        <a-asset-item id="ground3D" src="models/ground.glb"></a-asset-item>
+        <a-asset-item id="shark3D" src="models/shark.glb"></a-asset-item>
+        <a-asset-item id="water3D" src="models/water.glb"></a-asset-item>
+      </a-assets>
+      <a-entity position="0 -3 -10">
+        <a-entity
+          id="chicken"
+          gltf-model="#chicken3D"
+          position="0 1.3 0"
+          scale="0.6 0.6 0.6"
+        ></a-entity>
+        <a-entity
+          id="water"
+          gltf-model="#water3D"
+          position="0 -0.75 0"
+          scale="1.8 1 1.8"
+        ></a-entity>
+        <a-entity id="groundList">
+          <a-entity
+            id="ground11"
+            gltf-model="#ground3D"
+            position="-5 0 -5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground12"
+            gltf-model="#ground3D"
+            position="-2.5 0 -5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground13"
+            gltf-model="#ground3D"
+            position="0 0 -5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground14"
+            gltf-model="#ground3D"
+            position="2.5 0 -5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground15"
+            gltf-model="#ground3D"
+            position="5 0 -5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground21"
+            gltf-model="#ground3D"
+            position="-5 0 -2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground22"
+            gltf-model="#ground3D"
+            position="-2.5 0 -2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground23"
+            gltf-model="#ground3D"
+            position="0 0 -2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground24"
+            gltf-model="#ground3D"
+            position="2.5 0 -2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground25"
+            gltf-model="#ground3D"
+            position="5 0 -2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground31"
+            gltf-model="#ground3D"
+            position="-5 0 0"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground32"
+            gltf-model="#ground3D"
+            position="-2.5 0 0"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground33"
+            gltf-model="#ground3D"
+            position="0 0 0"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground34"
+            gltf-model="#ground3D"
+            position="2.5 0 0"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground35"
+            gltf-model="#ground3D"
+            position="5 0 0"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground41"
+            gltf-model="#ground3D"
+            position="-5 0 2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground42"
+            gltf-model="#ground3D"
+            position="-2.5 0 2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground43"
+            gltf-model="#ground3D"
+            position="0 0 2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground44"
+            gltf-model="#ground3D"
+            position="2.5 0 2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground45"
+            gltf-model="#ground3D"
+            position="5 0 2.5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground51"
+            gltf-model="#ground3D"
+            position="-5 0 5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground52"
+            gltf-model="#ground3D"
+            position="-2.5 0 5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground53"
+            gltf-model="#ground3D"
+            position="0 0 5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground54"
+            gltf-model="#ground3D"
+            position="2.5 0 5"
+            scale="1 1 1"
+          ></a-entity>
+          <a-entity
+            id="ground55"
+            gltf-model="#ground3D"
+            position="5 0 5"
+            scale="1 1 1"
+          ></a-entity>
+        </a-entity>
+      </a-entity>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <!-- Some UI without interaction -->
+    <div id="titleUI" class="noselect">
+      <img src="images/Title.png" alt="Chicken Code" style="max-width: 150px" />
+    </div>
+    <div id="stepListUI" class="noselect"></div>
+    <div id="scoreUI" class="noselect hidden">Your score: 5</div>
+
+    <!-- Some UI for control the chicken -->
+    <div id="startButtonUI" class="noselect">
+      <img
+        src="images/Lets Coding.png"
+        alt="Let's Coding"
+        style="max-width: 150px"
+      />
+    </div>
+    <div id="replayButtonUI" class="noselect hidden">
+      <img src="images/Replay.png" alt="Replay" style="max-width: 150px" />
+    </div>
+    <div id="processingButtonUI" class="noselect hidden">
+      <img
+        src="images/Processing.png"
+        alt="Processing"
+        style="max-width: 150px"
+      />
+    </div>
+    <div id="turnLeftButtonUI" class="noselect hidden">
+      <img
+        src="images/Turn Arrow.png"
+        alt="Turn Left"
+        style="max-height: 80px"
+      />
+    </div>
+    <div id="turnRightButtonUI" class="noselect hidden">
+      <img
+        src="images/Turn Arrow.png"
+        alt="Turn Right"
+        style="max-height: 80px; transform: scaleX(-1)"
+      />
+    </div>
+    <div id="moveForwardButtonUI" class="noselect hidden">
+      <img
+        src="images/Forward.png"
+        alt="Move Forward"
+        style="max-height: 80px"
+      />
+    </div>
+    <div id="undoButtonUI" class="noselect hidden">
+      <img src="images/Undo.png" alt="Undo" style="max-height: 80px" />
+    </div>
+    <div id="resetButtonUI" class="noselect hidden">
+      <img src="images/Reset.png" alt="Reset" style="max-height: 80px" />
+    </div>
+    <div id="moveButtonUI" class="noselect hidden">
+      <img src="images/Start.png" alt="Start" style="max-height: 80px" />
+    </div>
+
+    <!-- audio list -->
+    <audio id="buttonClickAudio" src="audios/buttonClick.webm"></audio>
+    <audio id="successAudio" src="audios/success.webm"></audio>
+    <audio id="winAudio" src="audios/win.webm"></audio>
+    <audio id="loseAudio" src="audios/lose.webm"></audio>
+    <audio id="stepAudio" src="audios/step.webm"></audio>
+
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,203 +1,231 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/logo.png" type="image/png" />
-    <title>Chicken Code</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <!-- <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.animation.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.material.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.primitives.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.physics.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.controls.min.js"></script> -->
+    <script src="https://libs.zappar.com/zappar-aframe/2.0.0/zappar-aframe.js"></script>
+
+    <meta charset="utf-8" />
+    <title>Chicken Code</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a-scene>
-      <!-- import all 3d model from models folder -->
+    <!-- SCENE START -->
+    <a-scene loading-screen="backgroundColor: #de3656">
+      <!-- Ask user for camera permissions, display some text if permission is denied -->
+      <a-entity zappar-permissions-ui id="permissions"></a-entity>
+      <!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
+      <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+
+      <!-- ASSET LIBRARY  -->
       <a-assets>
         <a-asset-item id="chicken3D" src="models/chicken.glb"></a-asset-item>
         <a-asset-item id="ground3D" src="models/ground.glb"></a-asset-item>
         <a-asset-item id="shark3D" src="models/shark.glb"></a-asset-item>
         <a-asset-item id="water3D" src="models/water.glb"></a-asset-item>
       </a-assets>
-      <a-entity position="0 -3 -10">
-        <a-entity
-          id="chicken"
-          gltf-model="#chicken3D"
-          position="0 1.3 0"
-          scale="0.6 0.6 0.6"
-        ></a-entity>
-        <a-entity
-          id="water"
-          gltf-model="#water3D"
-          position="0 -0.75 0"
-          scale="1.8 1 1.8"
-        ></a-entity>
-        <a-entity id="groundList">
+      <!-- END ASSET LIBRARY -->
+
+      <!-- CREATE AN A-FRAME CAMERA AND REPLACE IT WITH ZAPPAR'S CAMERA -->
+      <a-camera zappar-camera></a-camera>
+
+      <!-- AMBIENT LIGHTING -->
+      <a-entity light="type: ambient; color: #CCC"></a-entity>
+
+      <!-- CREATE AN INSTANT TRACKING EXPERIENCE -->
+      <a-entity zappar-instant="placement-mode: true" id="instant-group">
+        <!-- PLACE 3D OBJECTS TRACK FROM THE INSTANT ANCHOR -->
+        <a-entity position="0 -0.5 -1" scale="0.3 0.3 0.3">
           <a-entity
-            id="ground11"
-            gltf-model="#ground3D"
-            position="-5 0 -5"
-            scale="1 1 1"
+            id="chicken"
+            gltf-model="#chicken3D"
+            position="0 1.3 0"
+            scale="0.6 0.6 0.6"
           ></a-entity>
           <a-entity
-            id="ground12"
-            gltf-model="#ground3D"
-            position="-2.5 0 -5"
-            scale="1 1 1"
+            id="water"
+            gltf-model="#water3D"
+            position="0 -0.75 0"
+            scale="1.8 1 1.8"
           ></a-entity>
-          <a-entity
-            id="ground13"
-            gltf-model="#ground3D"
-            position="0 0 -5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground14"
-            gltf-model="#ground3D"
-            position="2.5 0 -5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground15"
-            gltf-model="#ground3D"
-            position="5 0 -5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground21"
-            gltf-model="#ground3D"
-            position="-5 0 -2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground22"
-            gltf-model="#ground3D"
-            position="-2.5 0 -2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground23"
-            gltf-model="#ground3D"
-            position="0 0 -2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground24"
-            gltf-model="#ground3D"
-            position="2.5 0 -2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground25"
-            gltf-model="#ground3D"
-            position="5 0 -2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground31"
-            gltf-model="#ground3D"
-            position="-5 0 0"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground32"
-            gltf-model="#ground3D"
-            position="-2.5 0 0"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground33"
-            gltf-model="#ground3D"
-            position="0 0 0"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground34"
-            gltf-model="#ground3D"
-            position="2.5 0 0"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground35"
-            gltf-model="#ground3D"
-            position="5 0 0"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground41"
-            gltf-model="#ground3D"
-            position="-5 0 2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground42"
-            gltf-model="#ground3D"
-            position="-2.5 0 2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground43"
-            gltf-model="#ground3D"
-            position="0 0 2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground44"
-            gltf-model="#ground3D"
-            position="2.5 0 2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground45"
-            gltf-model="#ground3D"
-            position="5 0 2.5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground51"
-            gltf-model="#ground3D"
-            position="-5 0 5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground52"
-            gltf-model="#ground3D"
-            position="-2.5 0 5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground53"
-            gltf-model="#ground3D"
-            position="0 0 5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground54"
-            gltf-model="#ground3D"
-            position="2.5 0 5"
-            scale="1 1 1"
-          ></a-entity>
-          <a-entity
-            id="ground55"
-            gltf-model="#ground3D"
-            position="5 0 5"
-            scale="1 1 1"
-          ></a-entity>
+          <a-entity id="groundList">
+            <a-entity
+              id="ground11"
+              gltf-model="#ground3D"
+              position="-5 0 -5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground12"
+              gltf-model="#ground3D"
+              position="-2.5 0 -5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground13"
+              gltf-model="#ground3D"
+              position="0 0 -5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground14"
+              gltf-model="#ground3D"
+              position="2.5 0 -5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground15"
+              gltf-model="#ground3D"
+              position="5 0 -5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground21"
+              gltf-model="#ground3D"
+              position="-5 0 -2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground22"
+              gltf-model="#ground3D"
+              position="-2.5 0 -2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground23"
+              gltf-model="#ground3D"
+              position="0 0 -2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground24"
+              gltf-model="#ground3D"
+              position="2.5 0 -2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground25"
+              gltf-model="#ground3D"
+              position="5 0 -2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground31"
+              gltf-model="#ground3D"
+              position="-5 0 0"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground32"
+              gltf-model="#ground3D"
+              position="-2.5 0 0"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground33"
+              gltf-model="#ground3D"
+              position="0 0 0"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground34"
+              gltf-model="#ground3D"
+              position="2.5 0 0"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground35"
+              gltf-model="#ground3D"
+              position="5 0 0"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground41"
+              gltf-model="#ground3D"
+              position="-5 0 2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground42"
+              gltf-model="#ground3D"
+              position="-2.5 0 2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground43"
+              gltf-model="#ground3D"
+              position="0 0 2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground44"
+              gltf-model="#ground3D"
+              position="2.5 0 2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground45"
+              gltf-model="#ground3D"
+              position="5 0 2.5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground51"
+              gltf-model="#ground3D"
+              position="-5 0 5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground52"
+              gltf-model="#ground3D"
+              position="-2.5 0 5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground53"
+              gltf-model="#ground3D"
+              position="0 0 5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground54"
+              gltf-model="#ground3D"
+              position="2.5 0 5"
+              scale="1 1 1"
+            ></a-entity>
+            <a-entity
+              id="ground55"
+              gltf-model="#ground3D"
+              position="5 0 5"
+              scale="1 1 1"
+            ></a-entity>
+          </a-entity>
         </a-entity>
       </a-entity>
-      <a-sky color="#ECECEC"></a-sky>
+      <!-- END INSTANT TRACKING EXPERIENCE -->
     </a-scene>
+    <!-- SCENE END -->
+
+    <!-- PLACEMENT BUTTON -->
+    <div id="placementUI" class="noselect">
+      <img src="images/Place.png" alt="Place" style="max-height: 80px" />
+    </div>
+
+    <!-- RESET BUTTON -->
+    <div id="repositionUI" class="noselect hidden">
+      <img
+        src="images/Reposition.png"
+        alt="Reposition"
+        style="max-height: 80px"
+      />
+    </div>
 
     <!-- Some UI without interaction -->
     <div id="titleUI" class="noselect">
       <img src="images/Title.png" alt="Chicken Code" style="max-width: 150px" />
     </div>
     <div id="stepListUI" class="noselect"></div>
-    <div id="scoreUI" class="noselect hidden">Your score: 5</div>
+    <div id="scoreUI" class="noselect hidden"></div>
 
     <!-- Some UI for control the chicken -->
     <div id="startButtonUI" class="noselect">
@@ -256,5 +284,50 @@
     <audio id="stepAudio" src="audios/step.webm"></audio>
 
     <script src="index.js"></script>
+
+    <script>
+      // WHEN THE EXPERIENCE LOADS WE START WITH A SETUP FUNCTION
+      window.addEventListener("load", setup);
+
+      function setup() {
+        // WHEN THE USER TAPS ON THE PLACEMENT UI
+        var placementUI = document.getElementById("placementUI");
+
+        // REPLACEMENT UI
+        var replacementUI = document.getElementById("repositionUI");
+
+        // INSTANT TRACKING GROUP
+        const instantGroup = document.getElementById("instant-group");
+
+        // SOUNDS
+        // BUTTON SOUNDS - ZAPSPLAT STANDARD LICENSE https://www.zapsplat.com/license-type/standard-license/
+        var buttonClick = new Audio("audios/buttonClick.webm");
+        buttonClick.volume = 0.2;
+
+        // FIRES WHEN PLACEMENT UI HEARS A CLICK EVENT ON IT
+        placementUI.addEventListener("click", function () {
+          // SET THE PLACEMENT-MODE TO FALSE ON INSTANT TRACKER GROUP
+          instantGroup.setAttribute("zappar-instant", "placement-mode: false");
+
+          // PLAY THE SOUND AND REMOVE THE PLACEMENT UI
+          buttonClick.play();
+          placementUI.classList.add("hidden");
+          replacementUI.classList.remove("hidden");
+        });
+
+        // FIRES WHEN REPLACEMENT UI HEARS A CLICK EVENT ON IT
+        replacementUI.addEventListener("click", function () {
+          // SET THE PLACEMENT-MODE TO TRUE ON THE INSTANT TRACKER GROUP
+          instantGroup.setAttribute("zappar-instant", "placement-mode: true");
+
+          // PLAY THE SOUND AND REMOVE THE REPLACEMENT UI
+          buttonClick.play();
+          replacementUI.classList.remove("visible");
+          replacementUI.classList.add("hidden");
+          placementUI.classList.remove("hidden");
+          placementUI.classList.add("visible");
+        });
+      }
+    </script>
   </body>
 </html>

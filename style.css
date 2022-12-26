@@ -84,6 +84,20 @@ body {
   transform: translateY(-50%);
   cursor: pointer;
 }
+#placementUI {
+  position: absolute;
+  top: 45%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+#repositionUI {
+  position: absolute;
+  top: 60%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 #titleUI {
   position: absolute;
   left: 50%;
